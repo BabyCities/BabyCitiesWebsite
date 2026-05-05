@@ -98912,6 +98912,30 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 40;
+  padding: 0.8rem 1rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #23313d;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-220%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .font-montserrat,
 .font-pt-serif {
   font-family: "Poppins", sans-serif;
@@ -98919,6 +98943,23 @@ body {
 
 .font-canda {
   font-family: "BabyCitiesHeading", "Poppins", sans-serif;
+}
+
+.site-wordmark {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.site-wordmark-nav {
+  width: min(9rem, 42vw);
+}
+
+.site-wordmark-footer {
+  width: min(10.5rem, 52vw);
+  margin: 0 auto;
 }
 
 /* BabyCities site styles */
@@ -99106,6 +99147,89 @@ body {
       width: 1.2rem;
       height: 1.2rem;
       flex: 0 0 auto;
+    }
+
+    .mobile-nav-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      min-height: 100%;
+      max-width: 28rem;
+      margin: 0 auto;
+      padding-top: 0.25rem;
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .mobile-nav-links {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .mobile-nav-links a {
+      display: block;
+      padding: 0.95rem 1rem;
+      border-radius: 1rem;
+      color: white;
+      text-decoration: none;
+      font-size: 1.15rem;
+      line-height: 1.4;
+      background: rgba(255, 255, 255, 0.08);
+      transition: background-color 180ms ease, transform 180ms ease;
+    }
+
+    .mobile-nav-links a:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateX(2px);
+    }
+
+    .mobile-nav-actions {
+      margin-top: auto;
+      display: grid;
+      gap: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .mobile-nav-store {
+      display: block;
+      padding: 1rem 1.15rem;
+      border-radius: 1rem;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(35, 49, 61, 0.12);
+      box-shadow: 0 12px 28px rgba(35, 49, 61, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease,
+        background-color 180ms ease, color 180ms ease;
+    }
+
+    .mobile-nav-store:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(35, 49, 61, 0.12);
+    }
+
+    .mobile-nav-store-ios {
+      background: #ea6344;
+      color: white;
+      border-color: rgba(217, 87, 57, 0.18);
+    }
+
+    .mobile-nav-store-ios:hover {
+      background: #d95739;
+    }
+
+    .mobile-nav-store-android {
+      background: rgba(255, 255, 255, 0.88);
+      color: #23313d;
+    }
+
+    .mobile-nav-store-android:hover {
+      background: white;
     }
 
     .download-link-ios:hover {
@@ -99728,7 +99852,37 @@ body {
       line-height: 1.6;
     }
 
+    .faq-item {
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .faq-summary {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-caret {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex: 0 0 auto;
+      transition: transform 180ms ease;
+    }
+
+    .faq-item[open] .faq-caret {
+      transform: rotate(90deg);
+    }
+
     .faq-answer {
+      margin-top: 0.95rem;
       font-size: 1rem;
       line-height: 1.75;
       color: #23313d;
@@ -99764,7 +99918,28 @@ body {
       box-shadow: 0 12px 28px rgba(35, 49, 61, 0.08);
     }
 
+    #showMenu:focus-visible,
+    #hideMenu:focus-visible,
+    .download-link:focus-visible,
+    .mobile-nav-links a:focus-visible,
+    .mobile-nav-store:focus-visible,
+    .story-inline-picker-trigger:focus-visible,
+    .faq-summary:focus-visible,
+    .footer-icon-link:focus-visible,
+    .footer-meta-links a:focus-visible {
+      outline: 3px solid #f0c140;
+      outline-offset: 4px;
+    }
+
     @media (min-width: 768px) {
+      .site-wordmark-nav {
+        width: 10rem;
+      }
+
+      .site-wordmark-footer {
+        width: 11.5rem;
+      }
+
       .hero-discover {
         font-size: 3.5rem;
       }
@@ -99838,6 +100013,29 @@ body {
       .story-finder-topline {
         flex-wrap: wrap;
         white-space: normal;
+      }
+
+      .mobile-nav-links a {
+        font-size: 1.05rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .skip-link,
+      .download-link,
+      .mobile-nav-links a,
+      .mobile-nav-store,
+      .story-inline-picker-trigger,
+      .faq-caret {
+        transition: none;
+      }
+
+      .animate-fade-in-down {
+        animation: none;
       }
     }
 

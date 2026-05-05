@@ -21,104 +21,129 @@
   <meta name="twitter:image" content="dist/assetsbis/images/linkedin/banner.png" />
   <link rel="icon" type="image/png" href="dist/assetsbis/images/logo/favicon.png" />
   <link rel="stylesheet" href="dist/styles.css" />
-  <script src="dist/supabase-config.js"></script>
-  <script src="dist/script.js"></script>
+  <script defer src="dist/supabase-config.js"></script>
+  <script defer src="dist/script.js"></script>
 </head>
 
 <body id="top">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <!-- Navigation -->
-  <nav class="site-nav fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-secondary z-10">
+  <nav class="site-nav fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-secondary z-10" aria-label="Primary">
     <div class="flex items-center">
       <a href="#top" aria-label="Back to top">
-        <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities logo" class="h-12" />
+        <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities logo" class="site-wordmark site-wordmark-nav" width="1521" height="596" decoding="async" />
       </a>
     </div>
     <div class="font-montserrat hidden md:flex items-center">
-      <a href="https://linktr.ee/babycitiesapp?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
-        target="_blank" rel="noreferrer" class="inline-block py-2 px-4 text-white bg-red rounded-3xl">
+      <a href="https://linktr.ee/babycitiesapp?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio"
+        target="_blank" rel="noopener noreferrer" class="inline-block py-2 px-4 text-white bg-red rounded-3xl">
         Download the app
       </a>
     </div>
-    <button id="showMenu" type="button" class="md:hidden" aria-label="Open menu">
-      <img src='dist/assets/logos/Menu.svg' alt="Menu icon" />
+    <button id="showMenu" type="button" class="md:hidden" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+      <img src='dist/assets/logos/Menu.svg' alt="" aria-hidden="true" />
     </button>
   </nav>
-  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down">
-    <div class="flex justify-end">
-      <button id="hideMenu" type="button" aria-label="Close menu">
-        <img src='dist/assets/logos/Cross.svg' alt="Close menu" class="h-16 w-16" />
-      </button>
+  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down" aria-hidden="true">
+    <div class="mobile-nav-panel font-montserrat">
+      <div class="mobile-nav-header">
+        <a href="#top" aria-label="Back to top">
+          <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities logo" class="site-wordmark site-wordmark-nav" width="1521" height="596" decoding="async" />
+        </a>
+        <button id="hideMenu" type="button" aria-label="Close menu">
+          <img src='dist/assets/logos/Cross.svg' alt="" aria-hidden="true" class="h-16 w-16" />
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">Why BabyCities</a>
+        <a href="#filters">Baby filters</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="mobile-nav-actions">
+        <a class="mobile-nav-store mobile-nav-store-ios" href="https://apps.apple.com/us/app/babycities/id6449683883"
+          target="_blank" rel="noopener noreferrer">
+          Download on iOS
+        </a>
+        <a class="mobile-nav-store mobile-nav-store-android" href="https://play.google.com/store/apps/details?id=app.babycities"
+          target="_blank" rel="noopener noreferrer">
+          Download on Android
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <section
-    class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
-    <div class="md:flex-1 md:mr-10">
-      <h1 class="font-canda hero-title mb-7">
-        <span class="hero-title-line">
-          <span class="hero-discover" data-i18n="hero.discover">Discover</span>
-          <span class="babycities-word">
-            <span class="letter-b">B</span>
-            <span class="letter-a">a</span>
-            <span class="letter-b2">b</span>
-            <span class="letter-y">y</span>
-            <span class="letter-c">C</span>
-            <span class="letter-i">i</span>
-            <span class="letter-t">t</span>
-            <span class="letter-i-soft">i</span>
-            <span class="letter-e">e</span>
-            <span class="letter-s">s</span>
+  <main id="main-content">
+    <!-- Hero -->
+    <section
+      class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
+      <div class="md:flex-1 md:mr-10">
+        <h1 class="font-canda hero-title mb-7">
+          <span class="hero-title-line">
+            <span class="hero-discover" data-i18n="hero.discover">Discover</span>
+            <span class="babycities-word">
+              <span class="letter-b">B</span>
+              <span class="letter-a">a</span>
+              <span class="letter-b2">b</span>
+              <span class="letter-y">y</span>
+              <span class="letter-c">C</span>
+              <span class="letter-i">i</span>
+              <span class="letter-t">t</span>
+              <span class="letter-i-soft">i</span>
+              <span class="letter-e">e</span>
+              <span class="letter-s">s</span>
+            </span>
           </span>
-        </span>
-      </h1>
-      <p class="font-montserrat font-normal mb-7 hero-copy" data-i18n="hero.copy">
-        Made for parents on the go. Find baby-friendly places in your city,
-        check the useful amenities before you go in, and share your own
-        experiences with other families.
-      </p>
-      <div id="download-options" class="font-montserrat">
-        <a class="download-link download-link-ios bg-red px-6 py-4 rounded-lg text-white mr-2 mb-2"
-          href="https://apps.apple.com/us/app/babycities/id6449683883" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path
-              d="M16.46 12.9c.03 3.18 2.79 4.24 2.82 4.26-.02.07-.43 1.5-1.4 2.97-.84 1.28-1.72 2.55-3.1 2.58-1.35.03-1.78-.8-3.33-.8-1.55 0-2.03.78-3.3.83-1.33.05-2.35-1.33-3.2-2.6C3.23 18.3 2 15.05 2.03 11.96c.02-2.44 1.33-3.74 2.64-4.37 1.37-.66 2.51-.68 3.3-.68 1.34 0 2.6.9 3.49.9.86 0 2.47-1.1 4.16-.94.71.03 2.7.29 3.97 2.13-.1.06-2.37 1.38-2.33 3.9Zm-2.31-7.5c.7-.84 1.17-2.01 1.04-3.17-1 .04-2.2.67-2.92 1.5-.65.75-1.21 1.94-1.06 3.08 1.11.09 2.24-.56 2.94-1.4Z" />
-          </svg>
-          <span data-i18n="hero.ios">Download on iOS</span>
-        </a>
-        <a class="download-link download-link-android px-6 py-4 rounded-lg"
-          href="https://play.google.com/store/apps/details?id=app.babycities" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
-            <path d="M8 9h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z"></path>
-            <path d="M9 9a3 3 0 0 1 6 0"></path>
-            <path d="M9 4.5 7 6.5"></path>
-            <path d="M15 4.5 17 6.5"></path>
-            <path d="M9 18v2"></path>
-            <path d="M15 18v2"></path>
-            <path d="M6 11H4"></path>
-            <path d="M20 11h-2"></path>
-            <circle cx="10.5" cy="12.5" r="0.7" fill="currentColor" stroke="none"></circle>
-            <circle cx="13.5" cy="12.5" r="0.7" fill="currentColor" stroke="none"></circle>
-          </svg>
-          <span data-i18n="hero.android">Download on Android</span>
-        </a>
-      </div>
-    </div>
-    <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
-      <div class="hero-visual" aria-label="BabyCities app screens">
-        <div class="hero-phone hero-phone-left">
-          <img src="dist/assets/babycities/screen-list.png" alt="BabyCities list screen" />
-        </div>
-        <div class="hero-app-mark">
-          <img src="dist/assets/babycities/logo-mark.png" alt="BabyCities app logo" />
-        </div>
-        <div class="hero-phone hero-phone-right">
-          <img src="dist/assets/babycities/screen-map.png" alt="BabyCities map screen" />
+        </h1>
+        <p class="font-montserrat font-normal mb-7 hero-copy" data-i18n="hero.copy">
+          Made for parents on the go. Find baby-friendly places in your city,
+          check the useful amenities before you go in, and share your own
+          experiences with other families.
+        </p>
+        <div id="download-options" class="font-montserrat">
+          <a class="download-link download-link-ios bg-red px-6 py-4 rounded-lg text-white mr-2 mb-2"
+            href="https://apps.apple.com/us/app/babycities/id6449683883" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M16.46 12.9c.03 3.18 2.79 4.24 2.82 4.26-.02.07-.43 1.5-1.4 2.97-.84 1.28-1.72 2.55-3.1 2.58-1.35.03-1.78-.8-3.33-.8-1.55 0-2.03.78-3.3.83-1.33.05-2.35-1.33-3.2-2.6C3.23 18.3 2 15.05 2.03 11.96c.02-2.44 1.33-3.74 2.64-4.37 1.37-.66 2.51-.68 3.3-.68 1.34 0 2.6.9 3.49.9.86 0 2.47-1.1 4.16-.94.71.03 2.7.29 3.97 2.13-.1.06-2.37 1.38-2.33 3.9Zm-2.31-7.5c.7-.84 1.17-2.01 1.04-3.17-1 .04-2.2.67-2.92 1.5-.65.75-1.21 1.94-1.06 3.08 1.11.09 2.24-.56 2.94-1.4Z" />
+            </svg>
+            <span data-i18n="hero.ios">Download on iOS</span>
+          </a>
+          <a class="download-link download-link-android px-6 py-4 rounded-lg"
+            href="https://play.google.com/store/apps/details?id=app.babycities" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 9h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z"></path>
+              <path d="M9 9a3 3 0 0 1 6 0"></path>
+              <path d="M9 4.5 7 6.5"></path>
+              <path d="M15 4.5 17 6.5"></path>
+              <path d="M9 18v2"></path>
+              <path d="M15 18v2"></path>
+              <path d="M6 11H4"></path>
+              <path d="M20 11h-2"></path>
+              <circle cx="10.5" cy="12.5" r="0.7" fill="currentColor" stroke="none"></circle>
+              <circle cx="13.5" cy="12.5" r="0.7" fill="currentColor" stroke="none"></circle>
+            </svg>
+            <span data-i18n="hero.android">Download on Android</span>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
+        <div class="hero-visual" aria-label="BabyCities app screens">
+          <div class="hero-phone hero-phone-left">
+            <img src="dist/assets/babycities/screen-list.png" alt="BabyCities list screen" width="1170" height="2532" decoding="async" />
+          </div>
+          <div class="hero-app-mark">
+            <img src="dist/assets/babycities/logo-mark.png" alt="BabyCities app logo" width="500" height="500" decoding="async" />
+          </div>
+          <div class="hero-phone hero-phone-right">
+            <img src="dist/assets/babycities/screen-map.png" alt="BabyCities map screen" width="1170" height="2532" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- Stats -->
   <section class="sectionSize bg-secondary stats-section" data-stats-section>
@@ -148,7 +173,7 @@
     <div class="how-grid">
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-screen how-visual-map">
-          <img src="dist/assets/babycities/screen-map.png" alt="Map view in BabyCities" />
+          <img src="dist/assets/babycities/screen-map.png" alt="Map view in BabyCities" width="1170" height="2532" loading="lazy" decoding="async" />
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.explore.title">Explore nearby</h3>
         <p class="text-center font-montserrat how-copy" data-i18n="how.explore.copy">
@@ -158,7 +183,7 @@
       </div>
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-icon">
-          <img src="dist/assetsbis/images/map-markers/points-png/favorites-icon.png" alt="Favorites in BabyCities" />
+          <img src="dist/assetsbis/images/map-markers/points-png/favorites-icon.png" alt="Favorites in BabyCities" loading="lazy" decoding="async" />
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.favorites.title">Save favorites</h3>
         <p class="text-center font-montserrat how-copy" data-i18n="how.favorites.copy">
@@ -168,8 +193,8 @@
       </div>
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-duo">
-          <img src="dist/assetsbis/images/babyfilters/changer-red.png" alt="Changing table filter" />
-          <img src="dist/assetsbis/images/babyfilters/buggy-red.png" alt="Stroller-friendly filter" />
+          <img src="dist/assetsbis/images/babyfilters/changer-red.png" alt="Changing table filter" width="500" height="500" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/babyfilters/buggy-red.png" alt="Stroller-friendly filter" width="500" height="500" loading="lazy" decoding="async" />
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.filter.title">Filter your search</h3>
         <p class="text-center font-montserrat how-copy" data-i18n="how.filter.copy">
@@ -189,7 +214,7 @@
       </div>
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-icon">
-          <img src="dist/assetsbis/images/map-markers/points-png/restaurant-icon.png" alt="Add new family-friendly places" />
+          <img src="dist/assetsbis/images/map-markers/points-png/restaurant-icon.png" alt="Add new family-friendly places" loading="lazy" decoding="async" />
           <span class="how-visual-badge" aria-hidden="true">+</span>
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.add.title">Add new places</h3>
@@ -200,10 +225,10 @@
       </div>
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-community">
-          <img src="dist/assetsbis/images/avatar/3.png" alt="Parent avatar" />
-          <img src="dist/assetsbis/images/avatar/11.png" alt="Parent avatar" />
-          <img src="dist/assetsbis/images/avatar/18.png" alt="Parent avatar" />
-          <img src="dist/assetsbis/images/avatar/7.png" alt="Parent avatar" />
+          <img src="dist/assetsbis/images/avatar/3.png" alt="Parent avatar" width="1080" height="1080" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/avatar/11.png" alt="Parent avatar" width="1080" height="1080" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/avatar/18.png" alt="Parent avatar" width="1080" height="1080" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/avatar/7.png" alt="Parent avatar" width="1080" height="1080" loading="lazy" decoding="async" />
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.community.title">Grow the community</h3>
         <p class="text-center font-montserrat how-copy" data-i18n-html="how.community.copy">
@@ -258,14 +283,14 @@
       </div>
       <div class="story-visual font-montserrat">
         <div class="story-device story-device-main">
-          <img src="dist/assets/babycities/screen-map.png" alt="BabyCities map screen" />
+          <img src="dist/assets/babycities/screen-map.png" alt="BabyCities map screen" width="1170" height="2532" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="sectionSize filters-section">
+  <section id="filters" class="sectionSize filters-section">
     <!-- <div class="filters-scribble filters-scribble-left">must-have</div> -->
     <div class="filters-heading-wrap">
       <h2 class="secondaryTitle section-title-hand filters-title" data-i18n="filters.title">Baby filters</h2>
@@ -276,7 +301,7 @@
     <div class="filters-grid">
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/changer-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/changer-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.changing.title">Changing table</h3>
           <p data-i18n="filters.changing.copy">
@@ -287,7 +312,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/highchair-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/highchair-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.highchair.title">High chair</h3>
           <p data-i18n="filters.highchair.copy">
@@ -298,7 +323,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/microwave-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/microwave-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.microwave.title">Microwave</h3>
           <p data-i18n="filters.microwave.copy">
@@ -309,7 +334,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/buggy-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/buggy-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.stroller.title">Stroller-friendly</h3>
           <p data-i18n="filters.stroller.copy">
@@ -320,7 +345,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/nursing-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/nursing-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.nursing.title">Nursing area</h3>
           <p data-i18n="filters.nursing.copy">
@@ -331,7 +356,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/playground-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/playground-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.playground.title">Playground</h3>
           <p data-i18n="filters.playground.copy">
@@ -342,7 +367,7 @@
       </div>
 
       <div class="flex font-montserrat filters-card">
-        <img src='dist/assetsbis/images/babyfilters/swing-white.png' alt='' class="feature-icon mr-4" />
+        <img src='dist/assetsbis/images/babyfilters/swing-white.png' alt='' class="feature-icon mr-4" width="500" height="500" loading="lazy" decoding="async" />
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.swing.title">Swing / kids play</h3>
           <p data-i18n="filters.swing.copy">
@@ -366,7 +391,7 @@
   </section>
 
   <!-- Reviews -->
-  <section class="sectionSize bg-secondary reviews-section">
+  <section id="reviews" class="sectionSize bg-secondary reviews-section">
     <div class="reviews-intro">
       <h2 class="secondaryTitle section-title-hand mb-4" data-i18n="reviews.title">What parents say</h2>
       <p class="font-montserrat reviews-copy" data-i18n-html="reviews.copy">
@@ -390,7 +415,7 @@
         </p>
         <div class="review-meta font-montserrat">
           <div class="review-avatar">
-            <img src="dist/assetsbis/images/avatar/3.png" alt="VDO BEL avatar" />
+            <img src="dist/assetsbis/images/avatar/3.png" alt="VDO BEL avatar" width="1080" height="1080" loading="lazy" decoding="async" />
           </div>
           <div>
             <div class="review-name">VDO BEL</div>
@@ -413,7 +438,7 @@
         </p>
         <div class="review-meta font-montserrat">
           <div class="review-avatar">
-            <img src="dist/assetsbis/images/avatar/11.png" alt="Mikayla Reid avatar" />
+            <img src="dist/assetsbis/images/avatar/11.png" alt="Mikayla Reid avatar" width="1080" height="1080" loading="lazy" decoding="async" />
           </div>
           <div>
             <div class="review-name">Mikayla Reid</div>
@@ -436,7 +461,7 @@
         </p>
         <div class="review-meta font-montserrat">
           <div class="review-avatar">
-            <img src="dist/assetsbis/images/avatar/18.png" alt="BabyCities community avatar" />
+            <img src="dist/assetsbis/images/avatar/18.png" alt="BabyCities community avatar" width="1080" height="1080" loading="lazy" decoding="async" />
           </div>
           <div>
             <div class="review-name" data-i18n-html="reviews.third.name"><span class="brand-word">BabyCities</span> users</div>
@@ -448,139 +473,132 @@
   </section>
 
   <!-- FAQ  -->
-  <section class="sectionSize items-start pt-16 md:pt-56 bg-red text-white">
+  <section id="faq" class="sectionSize items-start pt-16 md:pt-56 bg-red text-white">
     <div>
       <h2 class="secondaryTitle section-title-hand bg-highlight3 p-10 mb-0 bg-center bg-100%" data-i18n="faq.title">
         FAQ
       </h2>
     </div>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.one.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.one.question">
           Is <span class="brand-word">BabyCities</span> only useful in one city?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n-html="faq.one.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n-html="faq.one.answer">
         No. <span class="brand-word">BabyCities</span> is useful in daily city life, weekends away, and travel
         situations wherever parents share practical local knowledge.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.two.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.two.question">
           What makes <span class="brand-word">BabyCities</span> different?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n="faq.two.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n="faq.two.answer">
         The app focuses on practical details parents really need, like baby
         filters and family-friendly amenities, instead of generic reviews.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.three.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.three.question">
           What is BabyScore?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n-html="faq.three.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n-html="faq.three.answer">
         BabyScore is a quick confidence cue built from practical filters and community feedback, so you can judge at
         a glance whether a place feels right for your family.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.four.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.four.question">
           Can parents improve the map?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n="faq.four.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n="faq.four.answer">
         Yes. Parents can share useful updates and confirm what is really
         available, which makes the app more reliable for everyone.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.five.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.five.question">
           Is <span class="brand-word">BabyCities</span> free to use?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n-html="faq.five.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n-html="faq.five.answer">
         Yes. <span class="brand-word">BabyCities</span> is designed to be easy to access for parents looking
         for practical family-friendly places.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.six.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.six.question">
           Can I use <span class="brand-word">BabyCities</span> while traveling?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n="faq.six.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n="faq.six.answer">
         Yes. The app is especially helpful when you are in a neighborhood or a
         city you do not know well yet.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.seven.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n="faq.seven.question">
           Can I suggest a place to add?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n-html="faq.seven.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n-html="faq.seven.answer">
         Yes. <span class="brand-word">BabyCities</span> grows with parent contributions, so suggesting useful
         family-friendly places helps make the map better for everyone.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
-    <div toggleElement class="w-full py-4">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.eight.question">
+    <details class="faq-item w-full">
+      <summary class="faq-summary">
+        <span class="font-montserrat font-medium mr-auto faq-question" data-i18n-html="faq.eight.question">
           What kind of places can I find on <span class="brand-word">BabyCities</span>?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat font-normal hidden faq-answer" data-i18n="faq.eight.answer">
+        </span>
+        <img src='dist/assets/logos/CaretRight.svg' alt="" aria-hidden="true" class="faq-caret" />
+      </summary>
+      <div class="font-montserrat font-normal faq-answer" data-i18n="faq.eight.answer">
         You can explore cafes, restaurants, parks and everyday spots where
         baby-friendly amenities can make outings easier.
       </div>
-    </div>
-    <hr class="w-full bg-white" />
+    </details>
 
   </section>
+  </main>
 
   <!-- Footer -->
   <section id="footer" class="bg-red sectionSize">
     <div class="mb-4">
-      <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities" class="h-10 footer-wordmark-beige" />
+      <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities" class="site-wordmark site-wordmark-footer footer-wordmark-beige" width="1521" height="596" loading="lazy" decoding="async" />
     </div>
     <div class="flex items-center mb-6">
       <a class="footer-icon-link mx-1" href="https://www.linkedin.com/company/babycities/?viewAsMember=true"
-        target="_blank" rel="noreferrer" aria-label="LinkedIn">
+        target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <span class="font-montserrat font-semibold text-lg leading-none">in</span>
       </a>
-      <a href="https://www.instagram.com/babycitiesapp/?hl=fr" target="_blank" rel="noreferrer">
-        <img src='dist/assets/logos/Instagram.svg' alt="Instagram logo" class="mx-1" />
+      <a class="footer-icon-link mx-1" href="https://www.instagram.com/babycitiesapp/?hl=fr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src='dist/assets/logos/Instagram.svg' alt="" aria-hidden="true" class="mx-1" loading="lazy" decoding="async" />
       </a>
       <a class="footer-icon-link mx-1" href="mailto:hello@babycities.app" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"

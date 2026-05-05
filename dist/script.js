@@ -1,42 +1,83 @@
 window.addEventListener("load", function () {
+  const body = document.body;
   const mobileNav = document.querySelector("#mobileNav");
   const showMenuButton = document.querySelector("#showMenu");
   const hideMenuButton = document.querySelector("#hideMenu");
+  let lastFocusedElement = null;
+
+  function setMobileNavState(isOpen, options) {
+    if (!mobileNav) return;
+
+    const shouldRestoreFocus = !isOpen && (!options || options.restoreFocus !== false);
+
+    mobileNav.classList.toggle("hidden", !isOpen);
+    mobileNav.setAttribute("aria-hidden", String(!isOpen));
+
+    if (showMenuButton) {
+      showMenuButton.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    if (body) {
+      body.classList.toggle("mobile-menu-open", isOpen);
+    }
+
+    if (isOpen) {
+      lastFocusedElement = document.activeElement;
+
+      if (hideMenuButton) {
+        hideMenuButton.focus();
+      }
+
+      return;
+    }
+
+    if (
+      shouldRestoreFocus &&
+      lastFocusedElement &&
+      typeof lastFocusedElement.focus === "function"
+    ) {
+      lastFocusedElement.focus();
+    }
+
+    lastFocusedElement = null;
+  }
 
   if (showMenuButton && mobileNav) {
     showMenuButton.addEventListener("click", function () {
-      mobileNav.classList.remove("hidden");
+      setMobileNavState(true, { restoreFocus: false });
     });
   }
 
   if (hideMenuButton && mobileNav) {
     hideMenuButton.addEventListener("click", function () {
-      mobileNav.classList.add("hidden");
+      setMobileNavState(false);
     });
   }
 
   if (mobileNav) {
     mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", function () {
-        mobileNav.classList.add("hidden");
+        setMobileNavState(false, { restoreFocus: false });
       });
     });
   }
 
-  document.querySelectorAll("[toggleElement]").forEach((toggle) => {
-    toggle.addEventListener("click", function () {
-      const answerElement = toggle.querySelector("[answer]");
-      const caretElement = toggle.querySelector("img");
+  const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
+  const reducedMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-      if (answerElement.classList.contains("hidden")) {
-        answerElement.classList.remove("hidden");
-        caretElement.classList.add("rotate-90");
-      } else {
-        answerElement.classList.add("hidden");
-        caretElement.classList.remove("rotate-90");
-      }
-    });
-  });
+  function closeMobileNavOnDesktop(event) {
+    if (event.matches) {
+      setMobileNavState(false, { restoreFocus: false });
+    }
+  }
+
+  if (typeof desktopMediaQuery.addEventListener === "function") {
+    desktopMediaQuery.addEventListener("change", closeMobileNavOnDesktop);
+  } else if (typeof desktopMediaQuery.addListener === "function") {
+    desktopMediaQuery.addListener(closeMobileNavOnDesktop);
+  }
 
   const statsSection = document.querySelector("[data-stats-section]");
   const storyFinder = document.querySelector("[data-story-finder]");
@@ -51,7 +92,7 @@ window.addEventListener("load", function () {
   const storyFilterIcon = document.querySelector("[data-story-filter-icon]");
 
   const DEFAULT_TYPE_OPTION = {
-    value: "",
+    value: "2",
     label: "restaurants",
     icon: "dist/assetsbis/images/map-markers/points-png/restaurant-icon.png",
     queryLabel: "restaurant",
@@ -102,58 +143,64 @@ window.addEventListener("load", function () {
 
   const FALLBACK_PLACE_TYPE_OPTIONS = [
     {
-      value: "",
+      value: "1",
       label: "cafes",
       icon: "dist/assetsbis/images/map-markers/points-png/cafe-bars-icon.png",
       queryLabel: "cafe",
     },
     {
-      value: "",
+      value: "2",
       label: "restaurants",
       icon: "dist/assetsbis/images/map-markers/points-png/restaurant-icon.png",
       queryLabel: "restaurant",
     },
     {
-      value: "",
+      value: "4",
       label: "parks",
       icon: "dist/assetsbis/images/map-markers/points-png/park-icon.png",
       queryLabel: "park",
     },
     {
-      value: "",
+      value: "5",
       label: "beaches",
       icon: "dist/assetsbis/images/map-markers/points-png/beach-icon.png",
       queryLabel: "beach",
     },
     {
-      value: "",
+      value: "3",
       label: "shops",
       icon: "dist/assetsbis/images/map-markers/points-png/shop-icon.png",
       queryLabel: "shop",
     },
     {
-      value: "",
+      value: "6",
       label: "museums",
       icon: "dist/assetsbis/images/map-markers/points-png/museum-icon.png",
       queryLabel: "museum",
     },
     {
-      value: "",
+      value: "8",
       label: "stations",
       icon: "dist/assetsbis/images/map-markers/points-png/train-icon.png",
       queryLabel: "station",
     },
     {
-      value: "",
+      value: "7",
       label: "airports",
       icon: "dist/assetsbis/images/map-markers/points-png/airport-icon.png",
       queryLabel: "airport",
     },
     {
-      value: "",
+      value: "9",
       label: "services",
       icon: "dist/assetsbis/images/map-markers/points-png/services-icon.png",
       queryLabel: "service",
+    },
+    {
+      value: "10",
+      label: "entertainment",
+      icon: "dist/assetsbis/images/map-markers/points-png/divertissement-icon.png",
+      queryLabel: "entertainment",
     },
     {
       value: "",
@@ -168,7 +215,7 @@ window.addEventListener("load", function () {
   let selectedStoryFilter =
     BABY_FILTER_OPTIONS.find((option) => option.value === "stroller") ||
     BABY_FILTER_OPTIONS[0];
-  let loadedPlaceTypeOptions = [];
+  let publicStatsRow = null;
   const animatedNumbers = new WeakMap();
   const pendingStats = new Map();
   let statsAnimationReady = false;
@@ -224,6 +271,12 @@ window.addEventListener("load", function () {
 
     if (startValue === targetValue) {
       setAnimatedValue(element, targetValue);
+      return;
+    }
+
+    if (reducedMotionQuery.matches) {
+      setAnimatedValue(element, targetValue);
+      animatedNumbers.delete(element);
       return;
     }
 
@@ -297,6 +350,8 @@ window.addEventListener("load", function () {
 
   function normalizeLabel(value) {
     return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
       .replace(/&/g, "and")
       .replace(/[^a-z0-9]+/g, " ")
@@ -338,128 +393,57 @@ window.addEventListener("load", function () {
     return matchedOption || fallbackOption || options[0];
   }
 
-  function getMatchingPlaceTypeIds(option) {
-    if (!option) return [];
-
-    if (option.value) {
-      return [option.value];
+  function getPublicStoryCounts(stats) {
+    if (!stats || typeof stats !== "object") {
+      return null;
     }
 
-    const queryLabel = normalizeLabel(option.queryLabel || option.label);
-    if (!queryLabel) {
-      return [];
+    const config = getSupabaseConfig();
+    const storyCountsField = config.storyCountsField || "story_counts";
+    const rawStoryCounts = stats[storyCountsField];
+
+    if (!rawStoryCounts) {
+      return null;
     }
 
-    return loadedPlaceTypeOptions
-      .filter((placeTypeOption) => {
-        const optionLabel = normalizeLabel(placeTypeOption.label);
-        return (
-          optionLabel === queryLabel ||
-          optionLabel.includes(queryLabel) ||
-          queryLabel.includes(optionLabel)
-        );
-      })
-      .map((placeTypeOption) => placeTypeOption.value)
-      .filter(Boolean);
-  }
-
-  async function fetchMatchingPlaceTypeIds(url, anonKey, option) {
-    if (!option || !option.queryLabel || !url || !anonKey) {
-      return [];
-    }
-
-    const queryLabel = normalizeLabel(option.queryLabel);
-    if (!queryLabel) {
-      return [];
-    }
-
-    const params = new URLSearchParams();
-    params.set("select", "id,name");
-    params.set("name", `ilike.*${queryLabel}*`);
-    params.set("order", "name.asc");
-
-    const endpoint = `${getSupabaseBaseUrl(url)}/rest/v1/place_types?${params.toString()}`;
-
-    try {
-      const response = await fetch(endpoint, {
-        headers: getSupabaseHeaders(anonKey),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Place type match request failed with ${response.status}`);
+    if (typeof rawStoryCounts === "string") {
+      try {
+        return JSON.parse(rawStoryCounts);
+      } catch (error) {
+        return null;
       }
-
-      const rows = await response.json();
-      return rows.map((row) => String(row.id)).filter(Boolean);
-    } catch (error) {
-      return [];
     }
+
+    if (typeof rawStoryCounts === "object") {
+      return rawStoryCounts;
+    }
+
+    return null;
   }
 
-  function getPlaceTypeIconPath(name) {
-    const normalized = normalizeLabel(name);
-
-    if (
-      normalized.includes("cafe") ||
-      normalized.includes("coffee") ||
-      normalized.includes("bar")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/cafe-bars-icon.png";
+  function getStoryCountFromPublicStats(stats, typeOption, filterOption) {
+    const storyCounts = getPublicStoryCounts(stats);
+    if (!storyCounts) {
+      return NaN;
     }
 
-    if (
-      normalized.includes("restaurant") ||
-      normalized.includes("food") ||
-      normalized.includes("eat")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/restaurant-icon.png";
+    const typeKey =
+      typeOption && typeOption.value ? String(typeOption.value) : "all";
+    const filterKey =
+      filterOption && filterOption.value ? filterOption.value : "all";
+    const allCounts = storyCounts.all || null;
+    const typeCounts = storyCounts[typeKey] || allCounts || null;
+
+    if (!typeCounts || typeof typeCounts !== "object") {
+      return NaN;
     }
 
-    if (
-      normalized.includes("park") ||
-      normalized.includes("garden") ||
-      normalized.includes("playground")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/park-icon.png";
-    }
+    const resolvedValue =
+      typeCounts[filterKey] ??
+      typeCounts.all ??
+      (allCounts && (allCounts[filterKey] ?? allCounts.all));
 
-    if (normalized.includes("beach")) {
-      return "dist/assetsbis/images/map-markers/points-png/beach-icon.png";
-    }
-
-    if (
-      normalized.includes("train") ||
-      normalized.includes("station") ||
-      normalized.includes("metro")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/train-icon.png";
-    }
-
-    if (normalized.includes("airport")) {
-      return "dist/assetsbis/images/map-markers/points-png/airport-icon.png";
-    }
-
-    if (normalized.includes("museum")) {
-      return "dist/assetsbis/images/map-markers/points-png/museum-icon.png";
-    }
-
-    if (
-      normalized.includes("shop") ||
-      normalized.includes("store") ||
-      normalized.includes("market")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/shop-icon.png";
-    }
-
-    if (
-      normalized.includes("service") ||
-      normalized.includes("pharmacy") ||
-      normalized.includes("toilet")
-    ) {
-      return "dist/assetsbis/images/map-markers/points-png/services-icon.png";
-    }
-
-    return DEFAULT_TYPE_OPTION.icon;
+    return parseStatValue(resolvedValue);
   }
 
   function updateStoryCount(value) {
@@ -486,12 +470,20 @@ window.addEventListener("load", function () {
 
     options.forEach((option) => {
       const button = document.createElement("button");
+      const icon = document.createElement("img");
+      const label = document.createElement("span");
+
       button.type = "button";
       button.className = "story-inline-picker-option font-montserrat";
-      button.innerHTML = `<img src="${option.icon}" alt="" /><span>${option.label}</span>`;
+      icon.src = option.icon;
+      icon.alt = "";
+      label.textContent = option.label;
+
+      button.append(icon, label);
       button.addEventListener("click", function () {
         onSelect(option);
       });
+
       menu.appendChild(button);
     });
   }
@@ -554,67 +546,24 @@ window.addEventListener("load", function () {
         throw new Error("No stats row returned");
       }
 
+      publicStatsRow = stats;
+
       updateStat("places", parseStatValue(stats[placesField]));
       updateStat("countries", parseStatValue(stats[countriesField]));
       updateStat("users", parseStatValue(stats[usersField]));
     } catch (error) {
+      publicStatsRow = null;
       updateStat("places", NaN);
       updateStat("countries", NaN);
       updateStat("users", NaN);
     }
   }
 
-  async function loadPlaceTypes() {
+  function loadPlaceTypes() {
     if (!storyFinder || !storyTypeMenu) return;
 
-    const config = getSupabaseConfig();
-    const url = config.url || "";
-    const anonKey = config.anonKey || "";
-
     renderStoryFilterOptions();
-
-    if (!url || !anonKey) {
-      storyTypeOptions = dedupePlaceTypeOptions(FALLBACK_PLACE_TYPE_OPTIONS);
-      selectedStoryType = findMatchingOption(
-        storyTypeOptions,
-        ["restaurant", "restaurants", "resto"],
-        DEFAULT_TYPE_OPTION
-      );
-      renderStoryTypeOptions();
-      return;
-    }
-
-    const endpoint = `${getSupabaseBaseUrl(
-      url
-    )}/rest/v1/place_types?select=id,name&order=name.asc`;
-
-    try {
-      const response = await fetch(endpoint, {
-        headers: getSupabaseHeaders(anonKey),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Place types request failed with ${response.status}`);
-      }
-
-      const rows = await response.json();
-      const apiOptions = rows.map((row) => ({
-        value: String(row.id),
-        label: row.name,
-        icon: getPlaceTypeIconPath(row.name),
-        queryLabel: normalizeLabel(row.name),
-      }));
-
-      loadedPlaceTypeOptions = apiOptions;
-
-      storyTypeOptions =
-        apiOptions.length > 0
-          ? dedupePlaceTypeOptions(apiOptions)
-          : dedupePlaceTypeOptions(FALLBACK_PLACE_TYPE_OPTIONS);
-    } catch (error) {
-      loadedPlaceTypeOptions = [];
-      storyTypeOptions = dedupePlaceTypeOptions(FALLBACK_PLACE_TYPE_OPTIONS);
-    }
+    storyTypeOptions = dedupePlaceTypeOptions(FALLBACK_PLACE_TYPE_OPTIONS);
 
     selectedStoryType = findMatchingOption(
       storyTypeOptions,
@@ -627,73 +576,13 @@ window.addEventListener("load", function () {
   async function loadStoryCount() {
     if (!storyFinder) return;
 
-    const config = getSupabaseConfig();
-    const url = config.url || "";
-    const anonKey = config.anonKey || "";
-
-    if (!url || !anonKey) {
-      updateStoryCount(NaN);
-      return;
-    }
-
-    const params = new URLSearchParams();
-    params.set("select", "id");
-
-    let matchingTypeIds = getMatchingPlaceTypeIds(selectedStoryType);
-
-    if (
-      matchingTypeIds.length === 0 &&
-      selectedStoryType &&
-      selectedStoryType.queryLabel
-    ) {
-      matchingTypeIds = await fetchMatchingPlaceTypeIds(
-        url,
-        anonKey,
-        selectedStoryType
-      );
-    }
-
-    if (matchingTypeIds.length === 1) {
-      params.set("type", `eq.${matchingTypeIds[0]}`);
-    } else if (matchingTypeIds.length > 1) {
-      params.set("type", `in.(${matchingTypeIds.join(",")})`);
-    }
-
-    if (selectedStoryFilter && selectedStoryFilter.value) {
-      params.set(selectedStoryFilter.value, "is.true");
-    }
-
-    const endpoint = `${getSupabaseBaseUrl(url)}/rest/v1/places?${params.toString()}`;
-
-    updateStoryCount(NaN);
-
-    try {
-      let response = await fetch(endpoint, {
-        method: "HEAD",
-        headers: getSupabaseHeaders(anonKey, {
-          Prefer: "count=exact",
-        }),
-      });
-
-      if (!response.ok) {
-        response = await fetch(endpoint, {
-          headers: getSupabaseHeaders(anonKey, {
-            Prefer: "count=exact",
-          }),
-        });
-      }
-
-      if (!response.ok) {
-        throw new Error(`Places count request failed with ${response.status}`);
-      }
-
-      const contentRange = response.headers.get("content-range") || "";
-      const total = contentRange.split("/")[1];
-
-      updateStoryCount(parseStatValue(total));
-    } catch (error) {
-      updateStoryCount(NaN);
-    }
+    updateStoryCount(
+      getStoryCountFromPublicStats(
+        publicStatsRow,
+        selectedStoryType,
+        selectedStoryFilter
+      )
+    );
   }
 
   document.addEventListener("click", function (event) {
@@ -704,6 +593,17 @@ window.addEventListener("load", function () {
     if (storyFilterPicker && !storyFilterPicker.contains(event.target)) {
       closePicker(storyFilterPicker);
     }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+
+    if (mobileNav && !mobileNav.classList.contains("hidden")) {
+      setMobileNavState(false);
+    }
+
+    closePicker(storyTypePicker);
+    closePicker(storyFilterPicker);
   });
 
   if (statsSection) {
@@ -730,6 +630,8 @@ window.addEventListener("load", function () {
     statsAnimationReady = true;
   }
 
-  loadSupabaseStats();
-  loadPlaceTypes().then(loadStoryCount);
+  loadSupabaseStats().then(function () {
+    loadPlaceTypes();
+    loadStoryCount();
+  });
 });

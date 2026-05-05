@@ -5,4 +5,5 @@ window.BABYCITIES_SUPABASE_CONFIG = {
   placesField: "places_count",
   countriesField: "countries_count",
   usersField: "users_count",
+  storyCountsField: "story_counts",
 };

@@ -143,13 +143,13 @@ window.addEventListener("load", function () {
 
   const FALLBACK_PLACE_TYPE_OPTIONS = [
     {
-      value: "1",
+      value: "2",
       label: "cafes",
       icon: "dist/assetsbis/images/map-markers/points-png/cafe-bars-icon.png",
       queryLabel: "cafe",
     },
     {
-      value: "2",
+      value: "1",
       label: "restaurants",
       icon: "dist/assetsbis/images/map-markers/points-png/restaurant-icon.png",
       queryLabel: "restaurant",

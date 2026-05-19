@@ -1,83 +1,7 @@
 window.addEventListener("load", function () {
-  const body = document.body;
-  const mobileNav = document.querySelector("#mobileNav");
-  const showMenuButton = document.querySelector("#showMenu");
-  const hideMenuButton = document.querySelector("#hideMenu");
-  let lastFocusedElement = null;
-
-  function setMobileNavState(isOpen, options) {
-    if (!mobileNav) return;
-
-    const shouldRestoreFocus = !isOpen && (!options || options.restoreFocus !== false);
-
-    mobileNav.classList.toggle("hidden", !isOpen);
-    mobileNav.setAttribute("aria-hidden", String(!isOpen));
-
-    if (showMenuButton) {
-      showMenuButton.setAttribute("aria-expanded", String(isOpen));
-    }
-
-    if (body) {
-      body.classList.toggle("mobile-menu-open", isOpen);
-    }
-
-    if (isOpen) {
-      lastFocusedElement = document.activeElement;
-
-      if (hideMenuButton) {
-        hideMenuButton.focus();
-      }
-
-      return;
-    }
-
-    if (
-      shouldRestoreFocus &&
-      lastFocusedElement &&
-      typeof lastFocusedElement.focus === "function"
-    ) {
-      lastFocusedElement.focus();
-    }
-
-    lastFocusedElement = null;
-  }
-
-  if (showMenuButton && mobileNav) {
-    showMenuButton.addEventListener("click", function () {
-      setMobileNavState(true, { restoreFocus: false });
-    });
-  }
-
-  if (hideMenuButton && mobileNav) {
-    hideMenuButton.addEventListener("click", function () {
-      setMobileNavState(false);
-    });
-  }
-
-  if (mobileNav) {
-    mobileNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", function () {
-        setMobileNavState(false, { restoreFocus: false });
-      });
-    });
-  }
-
-  const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
   const reducedMotionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
-
-  function closeMobileNavOnDesktop(event) {
-    if (event.matches) {
-      setMobileNavState(false, { restoreFocus: false });
-    }
-  }
-
-  if (typeof desktopMediaQuery.addEventListener === "function") {
-    desktopMediaQuery.addEventListener("change", closeMobileNavOnDesktop);
-  } else if (typeof desktopMediaQuery.addListener === "function") {
-    desktopMediaQuery.addListener(closeMobileNavOnDesktop);
-  }
 
   const statsSection = document.querySelector("[data-stats-section]");
   const storyFinder = document.querySelector("[data-story-finder]");
@@ -92,7 +16,7 @@ window.addEventListener("load", function () {
   const storyFilterIcon = document.querySelector("[data-story-filter-icon]");
 
   const DEFAULT_TYPE_OPTION = {
-    value: "2",
+    value: "1",
     label: "restaurants",
     icon: "dist/assetsbis/images/map-markers/points-png/restaurant-icon.png",
     queryLabel: "restaurant",
@@ -136,7 +60,7 @@ window.addEventListener("load", function () {
     },
     {
       value: "",
-      label: "any baby filter",
+      label: "any baby tag",
       icon: "dist/assetsbis/images/babyfilters/changer-red.png",
     },
   ];
@@ -597,10 +521,6 @@ window.addEventListener("load", function () {
 
   document.addEventListener("keydown", function (event) {
     if (event.key !== "Escape") return;
-
-    if (mobileNav && !mobileNav.classList.contains("hidden")) {
-      setMobileNavState(false);
-    }
 
     closePicker(storyTypePicker);
     closePicker(storyFilterPicker);

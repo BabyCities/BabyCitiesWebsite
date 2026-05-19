@@ -40,45 +40,16 @@
         Download the app
       </a>
     </div>
-    <button id="showMenu" type="button" class="md:hidden" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
-      <img src='dist/assets/logos/Menu.svg' alt="" aria-hidden="true" />
-    </button>
+    <a href="https://linktr.ee/babycitiesapp?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio"
+      target="_blank" rel="noopener noreferrer" class="mobile-nav-download font-montserrat md:hidden">
+      Download
+    </a>
   </nav>
-  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down" aria-hidden="true">
-    <div class="mobile-nav-panel font-montserrat">
-      <div class="mobile-nav-header">
-        <a href="#top" aria-label="Back to top">
-          <img src='dist/assetsbis/images/logo-long/logo.png' alt="BabyCities logo" class="site-wordmark site-wordmark-nav" width="1521" height="596" decoding="async" />
-        </a>
-        <button id="hideMenu" type="button" aria-label="Close menu">
-          <img src='dist/assets/logos/Cross.svg' alt="" aria-hidden="true" class="h-16 w-16" />
-        </button>
-      </div>
-      <div class="mobile-nav-links">
-        <a href="#how-it-works">How it works</a>
-        <a href="#about">Why BabyCities</a>
-        <a href="#filters">Baby filters</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="mobile-nav-actions">
-        <a class="mobile-nav-store mobile-nav-store-ios" href="https://apps.apple.com/us/app/babycities/id6449683883"
-          target="_blank" rel="noopener noreferrer">
-          Download on iOS
-        </a>
-        <a class="mobile-nav-store mobile-nav-store-android" href="https://play.google.com/store/apps/details?id=app.babycities"
-          target="_blank" rel="noopener noreferrer">
-          Download on Android
-        </a>
-      </div>
-    </div>
-  </div>
 
   <main id="main-content">
     <!-- Hero -->
     <section
-      class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
+      class="hero-section md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
       <div class="md:flex-1 md:mr-10">
         <h1 class="font-canda hero-title mb-7">
           <span class="hero-title-line">
@@ -130,7 +101,7 @@
           </a>
         </div>
       </div>
-      <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
+      <div class="hero-visual-wrap flex justify-around md:block md:flex-1">
         <div class="hero-visual" aria-label="BabyCities app screens">
           <div class="hero-phone hero-phone-left">
             <img src="dist/assets/babycities/screen-list.png" alt="BabyCities list screen" width="1170" height="2532" decoding="async" />
@@ -193,8 +164,8 @@
       </div>
       <div class="how-card flex flex-col items-center text-center">
         <div class="how-visual how-visual-duo">
-          <img src="dist/assetsbis/images/babyfilters/changer-red.png" alt="Changing table filter" width="500" height="500" loading="lazy" decoding="async" />
-          <img src="dist/assetsbis/images/babyfilters/buggy-red.png" alt="Stroller-friendly filter" width="500" height="500" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/babyfilters/changer-red.png" alt="Changing table tag" width="500" height="500" loading="lazy" decoding="async" />
+          <img src="dist/assetsbis/images/babyfilters/buggy-red.png" alt="Stroller-friendly tag" width="500" height="500" loading="lazy" decoding="async" />
         </div>
         <h3 class="font-montserrat font-medium text-xl mb-2" data-i18n="how.filter.title">Filter your search</h3>
         <p class="text-center font-montserrat how-copy" data-i18n="how.filter.copy">
@@ -245,7 +216,7 @@
       <div>
         <h2 class="section-title-hand text-4xl md:text-5xl leading-tight mb-4" data-i18n="story.title">Made for easier outings.</h2>
         <p class="font-montserrat story-copy" data-i18n-html="story.copy">
-          With <span class="story-handword story-handword-rose">baby filters</span> and
+          With <span class="story-handword story-handword-rose">baby tags</span> and
           <span class="story-handword story-handword-gold">place types</span>, you can find a spot that fits
           your needs around you or ahead of time when planning a trip. Thanks
           to the <span class="story-handword story-babyscore" aria-label="BabyScore"><span class="letter-b">B</span><span class="letter-a">a</span><span class="letter-b2">b</span><span class="letter-y">y</span><span class="letter-c">S</span><span class="letter-i">c</span><span class="letter-t">o</span><span class="letter-i-soft">r</span><span class="letter-e">e</span></span> and
@@ -293,9 +264,9 @@
   <section id="filters" class="sectionSize filters-section">
     <!-- <div class="filters-scribble filters-scribble-left">must-have</div> -->
     <div class="filters-heading-wrap">
-      <h2 class="secondaryTitle section-title-hand filters-title" data-i18n="filters.title">Baby filters</h2>
+      <h2 class="secondaryTitle section-title-hand filters-title" data-i18n="filters.title">Baby tags</h2>
       <p class="filters-intro font-montserrat" data-i18n="filters.intro">
-        Baby filters help you check the small but essential details that make outings with babies and young kids much easier. Instead of guessing once you arrive, you can quickly see whether a place has the practical amenities your family actually needs, from stroller access and changing tables to high chairs, nursing areas or a microwave.
+        Baby tags help you check the small but essential details that make outings with babies and young kids much easier. Instead of guessing once you arrive, you can quickly see whether a place has the practical amenities your family actually needs, from stroller access and changing tables to high chairs, nursing areas or a microwave.
       </p>
     </div>
     <div class="filters-grid">
@@ -381,7 +352,7 @@
         <div>
           <h3 class="font-semibold text-2xl" data-i18n="filters.other.title">What else?</h3>
           <p data-i18n="filters.other.copy">
-            Contact us if you have other ideas for Baby filters we should add.
+            Contact us if you have other ideas for Baby tags we should add.
           </p>
           <p><a href="mailto:hello@babycities.app">hello@babycities.app</a></p>
         </div>

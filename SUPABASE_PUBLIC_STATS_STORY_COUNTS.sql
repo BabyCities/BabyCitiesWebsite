@@ -4,15 +4,15 @@
 -- This function returns counts in the following shape:
 -- {
 --   "all": { "all": 1234, "stroller": 456, ... },
---   "1":   { "all": 120,  "stroller": 40,  ... }, -- cafes
---   "2":   { "all": 320,  "stroller": 91,  ... }, -- restaurants
+--   "1":   { "all": 120,  "stroller": 40,  ... }, -- restaurants
+--   "2":   { "all": 320,  "stroller": 91,  ... }, -- cafes
 --   ...
 --   "10":  { "all": 18,   "stroller": 7,   ... }  -- entertainment
 -- }
 --
 -- Type ids used here:
--- 1 cafe
--- 2 restaurant
+-- 1 restaurant
+-- 2 cafe
 -- 3 magasin
 -- 4 parc
 -- 5 plage

@@ -6,9 +6,9 @@ BabyCities is a community-driven app that helps parents find baby-friendly place
 
 Going out with a baby means thinking ahead: Is there a changing table? Can the stroller get through? Is there somewhere quiet to nurse?
 
-BabyCities puts that practical knowledge at your fingertips, sourced from parents who've actually been there. Explore cafes, restaurants, parks and everyday spots near you — or plan ahead before you travel somewhere new — with the filters that actually matter to families.
+BabyCities puts that practical knowledge at your fingertips, sourced from parents who've actually been there. Explore cafes, restaurants, parks and everyday spots near you — or plan ahead before you travel somewhere new — with the tags that actually matter to families.
 
-## Baby filters
+## Baby tags
 
 BabyCities lets you search by the small but essential details that make outings easier:
 
